@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aunto Loan Calculator</title>
+  <link rel="stylesheet/less" type="text/css" href="./app.less" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<body ng-app="AutoLoanCalculatorApp" ng-controller="autoLoanCalculatorController">
+  <div class="calc">
+          <div class="header">
+            
+          </div>
+          <h1>Auto Loan Calculator</h1>
+            <p>
+                <input type="number" 
+                       id="amount"
+                       name="amount"
+                       placeholder="Car price"
+                       ng-model="amount">
+                <label for="amount"
+                       class="fa fa-dollar-sign">
+                </label>
+            </p>
+            <p>
+                <input type="number"
+                       id="months"
+                       placeholder="Loan Duration"
+                       ng-model="months"
+                       ng-change="calculateYears()">
+                <label for="amount" class="fa fa-calendar"></label>
+            </p>
+            <p>
+                <input type="text"
+                       id="years"
+                       placeholder="Loan Duration in Years"
+                       ng-model="years"
+                       ng-disabled="true">
+              <label for="amount" class="fa fa-calendar"></label>
+            </p>
+            <p>
+                <input type="number"
+                       id="interest"
+                       placeholder="Interest Rate"
+                       ng-model="int">
+                <label for="amount" class="fa interest"></label>
+            </p>
+           <p>
+                <input type="number"
+                       id="down"
+                       placeholder="Down Payment"
+                       ng-model="down">
+                <label for="amount" class="fa fa-arrow-down"></label>
+            </p>
+            <p>
+                <button class="btn" ng-click="displayVal()">Calculate</button>
+            </p>
+            <p ng-if="monthlyPayment">Monthly Payment: <strong>{{monthlyPayment | currency}}</strong></p>
+            <p ng-if="interestOnly">Total Interest paid: <strong>{{interestOnly | currency}}</strong></p>
+            <table class="table" ng-if="monthDetails">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Balance</th>
+                        <th>Interest</th>
+                        <th>Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="detail in monthDetails">
+                        <td>{{ detail.month }}</td>
+                        <td>{{ detail.balance }}</td>
+                        <td>{{ detail.interest }}</td>
+                        <td>{{ detail.amount }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <button class="btn" ng-if="monthlyPayment" ng-click="clearValues()">Recalculate</button>
+            </p>
+        </div>
+    </body> -->
+  <script type="text/javascript" src="./node_modules/angular/angular.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+</body>
+</html>
